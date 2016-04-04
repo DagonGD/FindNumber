@@ -14,6 +14,6 @@ public class NumberController : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		Debug.Log (this.name);
+		//Debug.Log (this.name);
 	}
 }
