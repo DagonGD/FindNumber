@@ -9,9 +9,15 @@ public class PlayerController : MonoBehaviour {
 	public Text txtScrore;
 	public Text txtNextNumber;
 
-	// Use this for initialization
-	void Start () {
-	
+    private AudioSource audioSource;
+    public AudioClip Success;
+    public AudioClip Fail;
+    public AudioClip Completed;
+
+    // Use this for initialization
+    void Start ()
+	{
+	    audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -26,11 +32,18 @@ public class PlayerController : MonoBehaviour {
 
 			if(hit.collider != null)
 			{
-				if (int.Parse (hit.collider.name) == nextNumber) 
-				{
-					nextNumber++;
-				}
+			    if (int.Parse(hit.collider.name) == nextNumber)
+			    {
+			        audioSource.PlayOneShot(Success);
+
+			        nextNumber++;
+			    }
+			    else
+			    {
+                    audioSource.PlayOneShot(Fail);
+                }
 			}
 		}
 	}
+
 }
