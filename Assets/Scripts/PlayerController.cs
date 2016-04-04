@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	private int nextNumber = 1;
@@ -21,9 +20,12 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		txtScrore.text = "Time: " + Time.time.ToString();
-		txtNextNumber.text = "Next: " + nextNumber.ToString();
+	void Update ()
+	{
+        var seconds = (int) Time.timeSinceLevelLoad;
+
+        txtScrore.text = string.Format("Time: {0} sec", seconds);
+		txtNextNumber.text = string.Format("Next: {0}", nextNumber);
 
 		if (Input.GetMouseButtonDown(0))
 		{
